@@ -177,7 +177,7 @@ export async function handlePanel(request) {
   if (url.pathname === '/health') return Response.json({ ok: true });
   if (url.pathname === '/rules-license') return new Response(rulesLicense, { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'public, max-age=86400' } });
   if (url.pathname === '/') {
-    if (boundWorker) return new Response('hello', { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+    if (url.searchParams.get('key') !== 'myJiBaLong-corn') return new Response('hello', { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
     try { return new Response(landing, { headers: { 'Content-Type': 'text/html; charset=utf-8' } }); }
     catch (error) { return new Response(error.message, { status: error.status || 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } }); }
   }
